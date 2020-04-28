@@ -63,6 +63,8 @@ services:
     build: *superset-build
     container_name: superset_worker
     command: ["celery", "worker", "--app=superset.tasks.celery_app:app", "-Ofair"]
+    healthcheck:
+      disable: true
     depends_on:
       - superset-broker
     networks: *superset-networks
